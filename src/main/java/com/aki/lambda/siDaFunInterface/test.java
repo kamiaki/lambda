@@ -12,7 +12,17 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class test {
+
+    public static void sss(Supplier<Integer> aaa){
+        System.out.println(aaa.get() * 10);
+    }
+
     public static void main(String[] args) {
+        //函数是接口的作用就是将 需要用到的方法 参数 或 判断 剥离出来在外头做
+        sss(() -> 2);
+        System.out.println("-----------");
+        System.out.println("-----------");
+
         // Supplier<T> : 供给型接口 T get();
         Supplier<Integer> su = () -> 666 * 2;
         Integer integer = su.get();

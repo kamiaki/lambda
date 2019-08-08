@@ -34,7 +34,8 @@ public class StreamDemo {
 
         Stream<UserTest> stream = users.stream();
         //所有的年龄大于20岁的User对象，转换为字符串50对象。现在流中只有字符串对象了。
-        Stream<String> stringStream = stream.filter((UserTest user) -> Integer.valueOf(user.getAge()) > 20).map((UserTest user) -> {
+        Stream<UserTest> userTestStream = stream.filter((UserTest user) -> Integer.valueOf(user.getAge()) > 20);
+        Stream<String> stringStream = userTestStream.map((UserTest user) -> {
             return user.getName();
         });
         stringStream.forEach((String str) -> System.out.println(str));
@@ -47,8 +48,11 @@ public class StreamDemo {
         users.add(new UserTest("10", "王五"));
 
         Stream<UserTest> stream = users.stream();
-        long count = stream.filter((UserTest user) ->  Integer.valueOf(user.getAge()) >= 20).map((UserTest user) -> {return "50";})
-                .count(); //返回流中元素的个数。
+        Stream<UserTest> count = stream.filter((UserTest user) ->  Integer.valueOf(user.getAge()) >= 20);
+        Stream<String> stringStream = count.map((UserTest user) -> {
+            return "50";
+        });
+        long count1 = stringStream.count();//返回流中元素的个数。
         System.out.println(count);
     }
 }

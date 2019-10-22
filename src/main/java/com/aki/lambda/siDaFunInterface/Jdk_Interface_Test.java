@@ -16,9 +16,11 @@ public class Jdk_Interface_Test {
         test4();
     }
 
+    //这个m 就是 accept的参数  也等同于其他函数式接口的参数
+
     //Consumer<T> 消费型接口：void accept(T t);
     public static void test1() {
-        happy(1000, (m) -> System.out.println("喜欢大宝剑，消费：" + m + "元"));
+        happy(1000, (m) -> System.out.println(" www， ww：" + m + "元"));
     }
 
     public static void happy(double money, Consumer<Double> con) {

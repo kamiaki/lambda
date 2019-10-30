@@ -1,12 +1,29 @@
 package com.aki.lambda.siDaFunInterface;
 
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class ShiLi {
     public static void main(String[] args) {
-        test();
+        consumerTest();
+    }
+
+    //Consumer
+    public static void consumerTest(){
+        //accept
+        Consumer<Integer> square = x -> System.out.println("print square : " + x * x);
+        square.accept(2);
+        square.accept(3);
+
+        //andThen
+        Consumer<Integer> consumer1 = x -> System.out.println("first x : " + x);
+        Consumer<Integer> consumer2 = x -> {
+            System.out.println("second x : " + x);
+         };
+        Consumer<Integer> consumer3 = x -> System.out.println("third x : " + x);
+        consumer1.andThen(consumer2).andThen(consumer3).accept(1);
     }
 
     //用supplier 实例化对象
@@ -15,6 +32,7 @@ public class ShiLi {
         test test = testSupplier.get();
     }
 
+    //func
     public static void funtest(){
         Function<Integer, Integer> name = e -> e * 2;
         Function<Integer, Integer> square = e -> e * e;
@@ -27,6 +45,7 @@ public class ShiLi {
         System.out.println(identity);
     }
 
+    //断言
     public static void test(){
         Predicate<Integer> predicate0 = x -> {
             if(x == 0){

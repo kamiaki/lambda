@@ -1,7 +1,7 @@
 package com.aki.lambda.siDaFunInterface;
 
 import java.util.function.Function;
-
+//分之2111111111
 public class fangfa4 {
     public static void main(String[] args) {
         Function<Integer, Integer> times2 = i -> i*2;
